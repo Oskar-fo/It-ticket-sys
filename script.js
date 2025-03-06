@@ -20,21 +20,21 @@ function renderTickets() {
         div.innerHTML = `
                     <p><strong>ID:</strong> ${ticket.id}</p>
                     <p><strong>Bruker:</strong> ${ticket.user}</p>
-                    <p><strong>Emne:</strong> ${ticket.status}</p>
-                    <p><strong>Problem:</strong> ${ticket.emne}</p>
+                    <p><strong>Problem Type:</strong> ${ticket.emne}</p>
+                    <p><strong>Problem:</strong> ${ticket.issue}</p>
                     <p><strong>Tid:</strong> ${ticket.timestamp}</p>
                     <p><strong>Status:</strong> ${ticket.status}</p>
                     <p><strong>Tilordnet:</strong> ${ticket.assignedTo || "Ingen"}</p>
                     <div class="btn-group">
-                        <button onclick="assign(${ticket.id})">Tilordne</button>
-                        <button onclick="resolve(${ticket.id})">Løs</button>
+                        <button onclick="tildel(${ticket.id})">Tilordne</button>
+                        <button onclick="løs(${ticket.id})">Løs</button>
                     </div>
                 `;
         ticketList.appendChild(div);
     });
 }
 
-function assign(id) {
+function tildel(id) {
     const name = prompt("Tilordne til (navn på ansatt):");
     if (name) {
         tickets = tickets.map(ticket => ticket.id === id ? { ...ticket, assignedTo: name } : ticket);
@@ -42,7 +42,7 @@ function assign(id) {
     }
 }
 
-function resolve(id) {
+function løs(id) {
     tickets = tickets.map(ticket => ticket.id === id ? { ...ticket, status: "Løst" } : ticket);
     renderTickets();
 }
