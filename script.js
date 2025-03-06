@@ -3,8 +3,9 @@ let tickets = [];
 document.getElementById("ticketForm").addEventListener("submit", function(event) {
     event.preventDefault();
     const user = document.getElementById("user").value;
+    const emne = document.getElementById("emne").value;
     const issue = document.getElementById("issue").value;
-    const newTicket = { id: Date.now(), user, issue, assignedTo: "", status: "Åpen", timestamp: new Date().toLocaleString() };
+    const newTicket = { id: Date.now(), user, emne, issue, assignedTo: "", status: "Åpen", timestamp: new Date().toLocaleString() };
     tickets.push(newTicket);
     document.getElementById("ticketForm").reset();
     renderTickets();
@@ -19,7 +20,8 @@ function renderTickets() {
         div.innerHTML = `
                     <p><strong>ID:</strong> ${ticket.id}</p>
                     <p><strong>Bruker:</strong> ${ticket.user}</p>
-                    <p><strong>Problem:</strong> ${ticket.issue}</p>
+                    <p><strong>Emne:</strong> ${ticket.status}</p>
+                    <p><strong>Problem:</strong> ${ticket.emne}</p>
                     <p><strong>Tid:</strong> ${ticket.timestamp}</p>
                     <p><strong>Status:</strong> ${ticket.status}</p>
                     <p><strong>Tilordnet:</strong> ${ticket.assignedTo || "Ingen"}</p>
