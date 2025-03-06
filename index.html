@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Ticket System</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+    <h1>IT Problem Løsning Online</h1>
+    <form id="ticketForm">
+        <input type="text" id="user" placeholder="Brukernavn" required>
+        <select  id="emne" >
+            <option value=""></option>
+            <option value="">Pc</option>
+            <option value="Software">Programvare</option>
+            <option value="Nettverk">Nettverk</option>
+        </select>
+        <input type="text" id="issue" placeholder="Beskrivelse av problemet" required>
+        <button type="submit">Opprett sak</button>
+    </form>
+
+    <h2>Registrerte saker</h2>
+    <div id="ticketList"></div>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
