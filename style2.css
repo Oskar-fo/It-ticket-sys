@@ -1,0 +1,9 @@
+
+.prosjekt-knapper{
+
+    display: flex;
+    height: 100px;
+    justify-content: space-evenly;
+
+
+}

@@ -29,12 +29,13 @@ function renderTickets() {
             <div class="btn-group">
                 <button onclick="tildel(${ticket.id})">Tilordne</button>
                 <button onclick="løs(${ticket.id})">Løs</button>
+                <button onclick="deleteTicket(${ticket.id})">Slett</button>
             </div>
         `;
         ticketList.appendChild(div);
     });
 }
-/*dette er functionen for å lage ticket og fungerer ved hjelp av håp og drømmer*/
+
 function tildel(id) {
     const name = prompt("Tilordne til (navn på ansatt):");
     if (name) {
@@ -48,6 +49,16 @@ function løs(id) {
     tickets = tickets.map(ticket => ticket.id === id ? { ...ticket, status: "Løst" } : ticket);
     localStorage.setItem("tickets", JSON.stringify(tickets));
     renderTickets();
+}
+function deleteTicket(id) {
+    const confirmDelete = confirm("Er du sikker på at du vil slette denne ticketen?");
+    if (confirmDelete) {
+        // Filtrer ut ticketen med riktig ID
+        tickets = tickets.filter(ticket => ticket.id !== id);
+        localStorage.setItem("tickets", JSON.stringify(tickets)); // Oppdater localStorage
+        renderTickets(); // Oppdater visningen
+        alert("Ticket ble slettet.");
+    }
 }
 
 /*Rendrer ticketsa når nettsiden starter*/
